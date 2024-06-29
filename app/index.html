@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content='yes' name='apple-mobile-web-app-capable'/>
-    <meta content='yes' name='mobile-web-app-capable'/>
+    <meta content='yes' name='apple-mobile-web-app-capable' />
+    <meta content='yes' name='mobile-web-app-capable' />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-title" content="talkie.dev">
@@ -14,36 +14,44 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <title>Splash Flag</title>
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
-        />
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-        />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" />
     <link rel="stylesheet" href="css/style.css">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 </head>
 
 <body>
     <header>
         <hgroup>
             <h1>Splash Flag</h1>
-            
+
         </hgroup>
 
         <nav>
             <ul>
+                <li><a href="#" data-nav="neighbors">Neighbors</a></li>
+                <li><a href="#" data-nav="pools">My Pools</a></li>
                 <li><a href="#" data-nav="about">About</a></li>
-                <li><a href="#" data-nav="model">Model</a></li>
-                <li><a href="#" data-nav="settings">Settings</a></li>
             </ul>
         </nav>
 
     </header>
-    
+
     <main>
-        We are not currently swimming
+        <p>This demo shows how to send push notifications with a payload.</p>
+
+        <form>
+            Notification payload: <input id='notification-payload' type='text' value='Insert here a payload'></input>
+            Notification delay: <input id='notification-delay' type='number' value='5'></input> seconds
+            Notification Time-To-Live: <input id='notification-ttl' type='number' value='0'></input> seconds
+        </form>
+
+        <button id="enable">Enable notifications!</button>
+        <button id="notifications">Push a notification!</button>
     </main>
 
     <script src="js/main.js"></script>

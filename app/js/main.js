@@ -1,3 +1,43 @@
+//
+// Variables
+//
+
+
+
+
+
+
+
+
+//
+// Methods
+//
+
+
+
+
+
+
+
+
+
+
+// 
+// Event listeners
+//
+
+
+
+
+
+///
+/// init
+/// 
+
+
+
+
+
 const button = document.getElementById("enable");
 button.addEventListener("click", () => {
   Notification.requestPermission()

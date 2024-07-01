@@ -17,42 +17,54 @@
     <meta http-equiv="Expires" content="0">
 
     <title>Splash Flag</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.blue.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-    
+
 
 </head>
 
 <body>
-    <header>
-        <hgroup>
-            <h1>Splash Flag</h1>
 
-        </hgroup>
 
-        <nav>
-            <ul>
-                <li><a href="#" data-nav="neighbors">Neighbors</a></li>
-                <li><a href="#" data-nav="pools">My Pools</a></li>
-                <li><a href="#" data-nav="about">About</a></li>
-            </ul>
-        </nav>
+    <main class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <hgroup>
+                            <h1>Splash Flag</h1>
+                        </hgroup>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="#" data-nav="neighbors">Pools</a></li>
+                    <li><a href="#" data-nav="help">Help</a></li>
+                    <li><a href="#" data-nav="Admin">Admin</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    </header>
+        <h2>Pools you monitor</h2>
 
-    <main>
-        <p>This demo shows how to send push notifications with a payload.</p>
-
-        <form>
-            Notification payload: <input id='notification-payload' type='text' value='Insert here a payload'></input>
-            Notification delay: <input id='notification-delay' type='number' value='5'></input> seconds
-            Notification Time-To-Live: <input id='notification-ttl' type='number' value='0'></input> seconds
-        </form>
-
-        <button id="enable">Enable notifications!</button>
-        <button id="notifications">Push a notification!</button>
+        <div class="no-swimming">
+            <p>No one is currently swimming.</p>
+        </div>
+        
+        <div class="swimming">
+            <article>
+                <header>
+                    <h4 style="margin:0;">Wagner's Pool</h4>
+                </header>
+                <p>You're invited to swim at the Wagner's!</p>
+                <p>Swimming from 5:15 pm to 6:00 pm.</p>
+                <button>RSVP?</button>
+                <button class="pico-background-jade-400">I'm coming <i class="fa fa-thumbs-up"
+                        style="font-size:20px;color:white"></i></button>
+            </article>
+        </div>
     </main>
 
     <script src="js/main.js"></script>

@@ -69,78 +69,34 @@
                 </article>
             </div>
         </div>
+
+
         <div id="page-help" class="hidden">HELP!</div>
+        
+        
         <div id="page-admin">
             <h2>Pools you Administer</h2>
-            <form>
-                <fieldset>
-                    <button>Add New Pool</button>
-                    <button>Add Existing Pool</button>
-                </fieldset>
-            </form>
-
-            <article>
-                <header>
-                    <h4 style="margin:0;">Existing Pool</h4>
-                </header>
-                <form>
-                    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" aria-describedby="email-helper" />
-                    <small id="email-helper">
-                        The email address associated with an existing pool.
-                    </small>
-                    <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-helper" />
-                    <small id="password-helper">
-                        The pool's password.
-                    </small>
-                    <button type="submit">Add Existing Pool</button>
-                </form>
-            </article>
-            <article>
-                <header>
-                    <h4 style="margin:0;">New Pool</h4>
-                </header>
-                <form>
-                    <input type="text" name="poolname" placeholder="Pool Name" aria-label="Pool Name" aria-describedby="poolname-helper" />
-                    <small id="poolname-helper">
-                        The name for your pool (as displayed to neighbors, eg. "Joe's Pool", "Smith Road Oasis", etc...).
-                    </small>
-                    <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" aria-describedby="email-helper" />
-                    <small id="email-helper">
-                        An email is required to manage your pool in the future. Your email is never sold.
-                    </small>
-                    <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-helper" />
-                    <small id="password-helper">
-                        A password is required to manage your pool in the future.
-                    </small>
-                    <button type="submit">Create New Pool</button>
-                </form>
-            </article>
-
-            <article>
-                <header>
-                    <h4 style="margin:0;">Smith Road Oasis</h4>
-                </header>
+       
+            <fieldset>
+                <button id="admin-add-new-pool">Add New Pool</button>
+                <button id="admin-add-existing-pool">Add Existing Pool</button>
+            </fieldset>
+ 
+            <div id="admin-add-pool">
+            </div>
+            
+            <div id="admin-pools">
                 
-                <fieldset role="group">
+            </div>
 
-                    <input type="text" name="sharecode-NB9HhT52" value="NB9HhT52" aria-label="Share Code" aria-describedby="sharecode-helper" readonly>
-                    <button><i class="fa fa-copy" title="Copy to Clipboard"></i></button>
-                    
-                </fieldset>
-                <small id="sharecode-helper">
-                    Share this code with neighbors so they can add your pool.
-                </small>
-
-                <form>
-                    <button class="pico-background-red-500" type="submit">Delete Pool</button>
-                </form>
-            </article>
+            
         </div>
 
 
     </main>
 
     <script src="js/pools.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

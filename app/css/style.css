@@ -10,3 +10,10 @@ html,body {
 .hidden {
     display:none;
 }
+
+input:user-valid {
+    border-color:#0f0;
+}
+input:user-invalid {
+    border-color:#f00;
+}

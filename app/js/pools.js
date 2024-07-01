@@ -29,6 +29,7 @@
 //
 
 document.addEventListener('click', function (event) {
+  
   // show hide pages from navigation
   if (event.target.dataset.nav != undefined) {
     let pages = document.querySelectorAll('[data-nav]');

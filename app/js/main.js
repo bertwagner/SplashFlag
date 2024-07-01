@@ -1,3 +1,5 @@
+"use strict";
+
 //
 // Variables
 //
@@ -26,7 +28,19 @@
 // Event listeners
 //
 
+document.addEventListener('click', function (event) {
+  // show hide pages from navigation
+  if (event.target.dataset.nav != undefined) {
+    let pages = document.querySelectorAll('[data-nav]');
+    
+    for (let i=0; i < pages.length; i++) {
+      let page=pages[i].dataset.nav;
+      document.querySelector(`#page-${page}`).classList.add("hidden");
+    }
 
+    document.querySelector(`#page-${event.target.dataset.nav}`).classList.remove("hidden");
+  }
+});
 
 
 
@@ -35,14 +49,21 @@
 /// 
 
 
+function stringGen(n){
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (var i = 0; i < n; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
 
 
-
-const button = document.getElementById("enable");
-button.addEventListener("click", () => {
-  Notification.requestPermission()
-  randomNotification()
-});
+// const button = document.getElementById("enable");
+// button.addEventListener("click", () => {
+//   Notification.requestPermission()
+//   randomNotification()
+// });
 
 function randomNotification() {
     const randomItem = Math.floor(Math.random());

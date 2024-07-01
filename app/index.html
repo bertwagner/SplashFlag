@@ -40,31 +40,42 @@
                     </li>
                 </ul>
                 <ul>
-                    <li><a href="#" data-nav="neighbors">Pools</a></li>
+                    <li><a href="#" data-nav="pools">Pools</a></li>
                     <li><a href="#" data-nav="help">Help</a></li>
-                    <li><a href="#" data-nav="Admin">Admin</a></li>
+                    <li><a href="#" data-nav="admin">Admin</a></li>
                 </ul>
             </nav>
         </header>
 
-        <h2>Pools you monitor</h2>
 
-        <div class="no-swimming">
-            <p>No one is currently swimming.</p>
+
+        <div id="page-pools" class="hidden">
+            <h2>Pools you monitor</h2>
+
+            <div class="no-swimming">
+                <p>No one is currently swimming.</p>
+            </div>
+
+            <div class="swimming">
+                <article>
+                    <header>
+                        <h4 style="margin:0;">Wagner's Pool</h4>
+                    </header>
+                    <p>You're invited to swim at the Wagner's!</p>
+                    <p>Swimming from 5:15 pm to 6:00 pm.</p>
+                    <button>RSVP?</button>
+                    <button class="pico-background-jade-400">I'm coming <i class="fa fa-thumbs-up"
+                            style="font-size:20px;color:white"></i></button>
+                </article>
+            </div>
         </div>
-        
-        <div class="swimming">
-            <article>
-                <header>
-                    <h4 style="margin:0;">Wagner's Pool</h4>
-                </header>
-                <p>You're invited to swim at the Wagner's!</p>
-                <p>Swimming from 5:15 pm to 6:00 pm.</p>
-                <button>RSVP?</button>
-                <button class="pico-background-jade-400">I'm coming <i class="fa fa-thumbs-up"
-                        style="font-size:20px;color:white"></i></button>
-            </article>
+        <div id="page-help" class="hidden">HELP!</div>
+        <div id="page-admin">
+            <h2>Pools you Administer</h2>
+            <button>Add new pool</button>
         </div>
+
+
     </main>
 
     <script src="js/main.js"></script>

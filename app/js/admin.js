@@ -13,24 +13,46 @@
 // Methods
 //
 
+function roundNext15MinuteInterval(date = new Date()) {
+    let currentHour = date.getHours();
+    let currentMinute = date.getMinutes();
+
+    let next_minutes = (parseInt((currentMinute + 15)/15) * 15) % 60;
+    let next_hours = currentMinute > 45 ? (currentHour === 23 ? 0 : currentHour+1) : currentHour;
+
+    return [next_hours,next_minutes];
+}
+
 function loadExistingPools() {
+    let [next_hours,next_minutes] = roundNext15MinuteInterval(new Date());
+
     let pools = `<article>
                     <header>
                         <h4 style="margin:0;">Smith Road Oasis</h4>
                     </header>
-                    
-                    <fieldset role="group">
-    
-                        <input type="text" name="sharecode-NB9HhT52" value="NB9HhT52" aria-label="Share Code" aria-describedby="sharecode-helper" readonly>
-                        <button><i class="fa fa-copy" title="Copy to Clipboard"></i></button>
-                        
-                    </fieldset>
-                    <small id="sharecode-helper">
-                        Share this code with neighbors so they can add your pool.
-                    </small>
-    
                     <form>
-                        <button class="pico-background-red-500" type="submit">Delete Pool</button>
+                    <h5>Go Swimming</h5>
+                    <fieldset role="group">
+                        <input type="time" name="admin-start-time" value="${next_hours}:${next_minutes}" aria-label="Start Time" aria-describedby="start-time-helper">
+                        <button style='white-space: nowrap;'>Go Swimming!</button>
+                    </fieldset>
+                    <small id="start-time-helper">
+                        Select a time you are planning on swimming today and notify your pool subscribers.
+                    </small>
+
+                    <h5>Share Pool</h5>
+                    <fieldset role="group">
+                        <input type="text" name="shareurl-NB9HhT52" dir="rtl" value="https://splashflag.com/add?id=NB9HhT52" aria-label="Share Pool URL" aria-describedby="shareurl-helper" readonly>
+                        <button><i class="fa fa-copy" title="Copy to Clipboard"></i></button>
+                    </fieldset>
+                    <small id="shareurl-helper">
+                        Share this url with neighbors so they can subscribe to your pool.
+                    </small>
+
+                    
+                    <h5>Delete Pool</h5>
+    
+                        <button class="pico-background-red-500" type="submit" id="admin-delete-pool">Delete Pool</button>
                     </form>
                 </article>`;
 
@@ -88,7 +110,7 @@ document.addEventListener('click', function (event) {
     if (event.target.id == "admin-add-existing-pool") {
         let content = `<article>
                 <header>
-                    <h4 style="margin:0;">Existing Pool</h4>
+                    <h4 style="margin:0;">Existing Pool(s)</h4>
                 </header>
                 <form name="add-existing-pool">
                     <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" aria-describedby="email-helper" />
@@ -97,9 +119,9 @@ document.addEventListener('click', function (event) {
                     </small>
                     <input type="password" name="password" placeholder="Password" aria-label="Password" aria-describedby="password-helper" />
                     <small id="password-helper">
-                        The pool's password.
+                        The password used during pool creation.
                     </small>
-                    <button type="submit">Add Existing Pool</button>
+                    <button type="submit">Add Existing Pool(s)</button>
                 </form>
             </article>`
 

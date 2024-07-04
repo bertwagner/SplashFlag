@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.1654.0",
+    "bcrypt": "^5.1.1"
+  },
+  "name": "splashflag-newpool",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "handler"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

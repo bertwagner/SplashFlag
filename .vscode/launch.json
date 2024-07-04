@@ -5,6 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "splashflag-newpool:index.handler (nodejs20.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/lambdas/splashflag-newpool",
+                "lambdaHandler": "index.handler"
+            },
+            "lambda": {
+                "runtime": "nodejs20.x",
+                "payload": {
+                    "json": {
+                        "body": {
+                            "poolname": "Don's Splash Pad",
+                            "email": "example@example.org",
+                            "password": "abc123"
+                        }
+                    }
+                },
+                "environmentVariables": {}
+            }
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",

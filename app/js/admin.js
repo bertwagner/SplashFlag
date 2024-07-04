@@ -17,14 +17,15 @@ function roundNext15MinuteInterval(date = new Date()) {
     let currentHour = date.getHours();
     let currentMinute = date.getMinutes();
 
-    let next_minutes = (parseInt((currentMinute + 15)/15) * 15) % 60;
-    let next_hours = currentMinute > 45 ? (currentHour === 23 ? 0 : currentHour+1) : currentHour;
+    let next_minutes = ((parseInt((currentMinute + 15) / 15) * 15) % 60).toString().padStart(2,'0');
+    let next_hours = (currentMinute > 45 ? (currentHour === 23 ? 0 : currentHour + 1) : currentHour).toString().padStart(2,'0');
 
-    return [next_hours,next_minutes];
+    return [next_hours, next_minutes];
 }
 
 function loadExistingPools() {
-    let [next_hours,next_minutes] = roundNext15MinuteInterval(new Date());
+    let [next_hours, next_minutes] = roundNext15MinuteInterval(new Date());
+    console.log(next_hours,next_minutes)
 
     let pools = `<article>
                     <header>
@@ -42,7 +43,7 @@ function loadExistingPools() {
 
                     <h5>Share Pool</h5>
                     <fieldset role="group">
-                        <input type="text" name="shareurl-NB9HhT52" dir="rtl" value="https://splashflag.com/add?id=NB9HhT52" aria-label="Share Pool URL" aria-describedby="shareurl-helper" readonly>
+                        <input type="text" name="shareurl-NB9HhT52" value="https://splashflag.com/add?id=NB9HhT52" aria-label="Share Pool URL" aria-describedby="shareurl-helper" readonly>
                         <button><i class="fa fa-copy" title="Copy to Clipboard"></i></button>
                     </fieldset>
                     <small id="shareurl-helper">
@@ -133,10 +134,27 @@ document.addEventListener('click', function (event) {
 document.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    if (event.target.name="add-new-pool") {
-        console.log(event.target);
+    if (event.target.name = "add-new-pool") {
+        const data = Object.fromEntries(new FormData(event.target));
+
+        fetch("https://api.splashflag.com/new-pool",
+            {
+                method: 'post',
+                body: JSON.stringify(data)
+            }
+        ).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Something wen wrong");
+        }
+        ).then(data => {
+            console.log(data);
+        }).catch(error => {
+            console.log(error);
+        });
     }
-    
+
 });
 
 

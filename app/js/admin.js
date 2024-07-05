@@ -146,7 +146,7 @@ document.addEventListener('submit', function (event) {
             if (response.ok) {
                 return response.json();
             }
-            throw new Error("Something wen wrong");
+            throw new Error("Something went wrong");
         }
         ).then(data => {
             console.log(data);

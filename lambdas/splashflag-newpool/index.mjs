@@ -23,29 +23,20 @@ export const handler = async (event) => {
 
   const password = event.body.password;
   const saltRounds = 10;
-  const poolId = generatePoolId(8);
+  
+  const poolId = generatePoolId(8); 
+  let hashedPassword = await bcrypt.hash(password, saltRounds);
 
-let a = "";
-
-console.log('INCOMING!')
-  bcrypt.hash(password, saltRounds).then(function(err, hash) {
-    a = hash;
-});
-
-//const hashsalt = bcrypt.hashSync(password, saltRounds);
-
- // bcrypt.hash(password, saltRounds, function (err, hashsalt) {
-    const command = new PutCommand({
-      TableName: "splashflag",
-      Item: {
-        PK: `PoolId${poolId}`,
-        SK: null,
-        Email: event.body.email,
-        Password: "hashsalt",
-        PoolName: event.body.poolname
-      },
-    });
-  //});
+  const command = new PutCommand({
+    TableName: "splashflag",
+    Item: {
+      PK: `PoolId#${poolId}`,
+      SK: poolId,
+      Email: event.body.email,
+      Password: hashedPassword,
+      PoolName: event.body.poolname
+    },
+  });
 
   const response = await docClient.send(command);
   console.log(response);
@@ -57,3 +48,11 @@ console.log('INCOMING!')
   //};
   //return response;
 };
+
+
+// let oldhash="$2b$10$p0BWb6wkdq1smdnmQc2Jm.c6A/naYMT.JnarvkL8knZQOddJc/Ety";
+
+//       bcrypt.compare(password+"a",oldhash).then((result,err) => {
+//         console.log('result:',result);
+//         console.log('error:',err);
+//       });

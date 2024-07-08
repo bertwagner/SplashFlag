@@ -15,16 +15,13 @@ function generatePoolId(n) {
 
 export const handler = async (event) => {
 
-
-
-
   const client = new DynamoDBClient({});
   const docClient = DynamoDBDocumentClient.from(client);
 
+  const poolId = generatePoolId(8);
+
   const password = event.body.password;
   const saltRounds = 10;
-  
-  const poolId = generatePoolId(8); 
   let hashedPassword = await bcrypt.hash(password, saltRounds);
 
   const command = new PutCommand({
@@ -39,13 +36,23 @@ export const handler = async (event) => {
   });
 
   const response = await docClient.send(command);
-  console.log(response);
-  return response;
+  // TODO: Replace with correct code for DynamoDB errors
+  if (response != "ERROR") {
+    let httpResponse = {
+      statusCode: 200,
+      body: JSON.stringify(event),
+    };
+    return httpResponse;
+  } else {
+    let httpResponse = {
+      statusCode: 200,
+      body: JSON.stringify(event),
+    };
+    return httpResponse;
+  }
 
-  //const response = {
-  //  statusCode: 200,
-  //  body: JSON.stringify(event),
-  //};
+
+
   //return response;
 };
 
